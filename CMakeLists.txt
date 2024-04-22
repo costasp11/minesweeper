@@ -15,6 +15,7 @@ add_executable(MineSweeper main.cpp
         board.h
         tile.cpp
         tile.h
+        Clock.h
 )
 target_link_libraries(MineSweeper PRIVATE sfml-graphics)
 target_compile_features(MineSweeper PRIVATE cxx_std_17)
