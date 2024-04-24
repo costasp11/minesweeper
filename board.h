@@ -37,6 +37,7 @@ struct Board {
     void boardUpdate(sf::RenderWindow& gameWindow); // continuously updates the sprite of each tile after each frame (in main loop)
     void pauseGame(); // sets all the tiles to disabled
     void collectNeighborTiles();
+    void reveal_flags();
 };
 
 

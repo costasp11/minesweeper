@@ -17,25 +17,20 @@ Board::Board() {
         string col;
         getline(boardConfig, col);
         this->column_count = stoi(col);
-        cout << this->column_count << endl;
 
         //read rows
         string rows;
         getline(boardConfig, rows);
         this->row_count = stoi(rows);
-        cout << this->row_count << endl;
 
 
         //read minecount
         string minecount;
         getline(boardConfig, minecount);
         this->mine_count = stoi(minecount);
-        cout << this->mine_count << endl;
-
         //store tile count
         this->tile_count = this->row_count * this->column_count;
-        cout << tile_count << endl;
-    }
+        }
     else cout << "Cannot open file" << endl;
 
     //initialize booleans
@@ -172,6 +167,7 @@ bool Board::checkWin() {
                 count++; // counts how many tiles are revealed on the board
             }
             if(count == (tile_count - mine_count)){
+                winner = true; // sets value to true
                 return true;
             }
         }
@@ -187,6 +183,14 @@ void Board::clear() {
     for(auto vectorPointer : vectorBoardPointers){
         for(auto tile : *vectorPointer){
             delete tile; // delete each tile on board when restart game
+        }
+    }
+}
+
+void Board::reveal_flags(){
+    for(auto vectorPointer : vectorBoardPointers){
+        for(auto tile : *vectorPointer){
+            tile->reveal_flags = true;
         }
     }
 }

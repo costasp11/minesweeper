@@ -29,6 +29,7 @@ public:
     bool is_flagged;
     bool is_revealed;
     bool is_enabled;
+    bool reveal_flags;
     Tile(float xcoord, float ycoord);
     vector<Tile*> adjacent_tiles; // always going to be 8 tiles
 

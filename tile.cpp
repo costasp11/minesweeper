@@ -30,6 +30,8 @@ Tile::Tile(float xcoord, float ycoord) {
     is_mine = false;
     is_revealed = false;
     is_enabled = true;
+    reveal_flags = false;
+
 
 }
 
@@ -53,6 +55,10 @@ void Tile::update(sf::RenderWindow &window, bool is_paused, bool is_debug, bool 
     }
     // NOT DEBUG MODE
     if (!is_debug) {
+        if(reveal_flags && is_mine){
+            sprite.setTexture(flagTexture);
+            window.draw(sprite);
+        }
         // ONLY IF THE TILE IS NOT REVEALED
         if(!is_revealed && is_enabled){
             if(is_flagged){
